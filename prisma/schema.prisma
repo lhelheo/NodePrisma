@@ -15,7 +15,17 @@ datasource db {
 
 model User {
   id Int @id @default(autoincrement())
+  status Boolean @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
   name String
   email String @unique
+  posts Post[]
+}
 
+model Post {
+  id Int @id @default(autoincrement())
+  title String
+  userID Int
+  author User @relation(fields: [userID], references: [id])
 }
