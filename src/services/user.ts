@@ -6,8 +6,14 @@ interface createUserProps {
 }
 
 export const createUser = async ({ name, email }: createUserProps) => {
-    const user = await prisma.user.create({
-        data: { name, email }
-    })
+    try {
+        const user = await prisma.user.create({
+            data: { name, email }
+        })
+        if (user) {
+
+        }
+    }
+    
     return user;
 }
