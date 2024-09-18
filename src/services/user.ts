@@ -21,7 +21,12 @@ export const createUsers = async (users: Prisma.UserCreateInput[]) => {
 }
 
 export const getAllUsers = async () => {
+    let currentPage = 1;
+    let perPage = 2;
+
     const users = await prisma.user.findMany({
+        skip: (currentPage - 1) * perPage,
+        take: perPage,
         orderBy: {
             name: "asc"
         },
