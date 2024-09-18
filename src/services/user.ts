@@ -81,3 +81,17 @@ export const getUserByEmail = async (email: string) => {
     })
     return user;
 }
+
+export const updateUser = async () => {
+    const updatedUser = await prisma.user.updateMany({
+        where: {
+            email: {
+                endsWith: "@gmail.com"
+            },
+        },
+        data: {
+            status: false
+        }
+    })
+    return updatedUser;
+}
