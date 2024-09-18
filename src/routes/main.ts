@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createUser, createUsers, getAllUsers, getUserByEmail, updateUser } from '../services/user';
+import { createUser, createUsers, deleteUser, getAllUsers, getUserByEmail, updateUser } from '../services/user';
 
 export const mainRouter = Router();
 
@@ -47,5 +47,10 @@ mainRouter.get("/user", async (req, res) => {
 
 mainRouter.put("/user", async (req, res) => {
     const result = await updateUser();
+    res.json({ result });
+})
+
+mainRouter.delete("/user", async (req, res) => {
+    const result = await deleteUser();
     res.json({ result });
 })
