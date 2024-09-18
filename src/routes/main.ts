@@ -13,8 +13,14 @@ mainRouter.get("/test", (req, res) => {
 
 mainRouter.post("/user", async (req, res) => {
     const user = await createUser({
-        name: "Leonardo",
-        email: "leonardo@gmail.com"
+        name: "teste2",
+        email: "teste2@gmail.com",
+        posts: {
+            create: {
+                title: "Post do Teste2",
+                body: "Corpo de teste"
+            }
+        }
     })
     if (user) {
         res.status(201).json({ user });
