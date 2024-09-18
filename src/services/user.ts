@@ -47,7 +47,11 @@ export const getAllUsers = async () => {
             id: true,
             name: true,
             email: true,
-           status: true,
+            _count: {
+                select: {
+                    posts: true
+                }
+            }
         }
     });
     return users;
