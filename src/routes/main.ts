@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createUser } from '../services/user';
+import { createUser, createUsers } from '../services/user';
 
 export const mainRouter = Router();
 
@@ -22,4 +22,9 @@ mainRouter.post("/user", async (req, res) => {
     else {
         res.status(500).json({ error: "Error email already exists" });
     }
+})
+
+mainRouter.post("/users", async (req, res) => {
+    const result = await createUsers([]);
+    res.json({ result });
 })
